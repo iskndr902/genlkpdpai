@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Profil pengguna guru atau pendidik PAI yang terotentikasi",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 200 },
+        "email": { "type": "string", "maxLength": 200 },
+        "photoURL": { "type": "string", "maxLength": 500 },
+        "role": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "SavedWorksheet": {
+      "title": "SavedWorksheet",
+      "description": "Dokumen LKPD dan modul ajar PAI yang disimpan oleh guru",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 255 },
+        "grade": { "type": "string", "maxLength": 100 },
+        "chapter": { "type": "string", "maxLength": 255 },
+        "worksheetData": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "worksheetData"]
+    },
+    "ChatSession": {
+      "title": "ChatSession",
+      "description": "Riwayat percakapan konsultasi kurikulum PAI dengan AI",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 255 },
+        "messages": { "type": "string" },
+        "modelUsed": { "type": "string", "maxLength": 100 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "messages"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Dokumen profil guru"
+    },
+    "/users/{userId}/worksheets/{worksheetId}": {
+      "schema": "SavedWorksheet",
+      "description": "Koleksi LKPD tersimpan milik guru"
+    },
+    "/users/{userId}/chats/{chatId}": {
+      "schema": "ChatSession",
+      "description": "Koleksi riwayat percakapan asisten kurikulum"
+    }
+  }
+}

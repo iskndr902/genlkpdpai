@@ -1,0 +1,7 @@
+{
+  "name": "Lumina Islamic EdTech - Studio Modul & LKPD PAI",
+  "description": "Platform perancang modul pembelajaran dan lembar kerja peserta didik (LKPD) Pendidikan Agama Islam berstandar Kurikulum Merdeka dengan dual-pane live canvas A4.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
